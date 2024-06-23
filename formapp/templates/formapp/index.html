@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact us form</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'formapp/style.css' %}">
+  </head>
+  <body>
+    <div class="main-block">
+      <div class="left-part">
+        <i class="fas fa-pencil-alt"></i>
+        <h1>We'd love to hear from you</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae ut labore magnam repudiandae non tenetur excepturi.</p>
+      </div>
+      <form action="/" method="POST">
+        <div class="title">
+          <i class="">✏</i>
+          <h2>Contact us</h2>
+        </div>
+        {% csrf_token %}
+        {% for field in form %}
+
+        <div class="info"{% if field.errors %}errors{% endif %}>
+          {{ field.label_tag }}
+          {{ field }}
+          {{ field.errors }}
+        </div>
+          {% endfor %}
+
+        <button type="submit" href="/">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
